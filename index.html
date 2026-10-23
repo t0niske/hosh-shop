@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HOSH — подписка на аромат</title>
+<meta name="description" content="HOSH — магазин подписок на ароматизацию. Выберите диффузор Nova 300 или Nova 1000, срок и один из 32 ароматов. Масла, обслуживание и гарантия включены.">
+<meta name="theme-color" content="#2230C9">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232230C9'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-weight='900' font-size='18' fill='%23FFF3D6' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <p>Подождите, HOSH<br>распыляет аромат<span class="ld-dots"></span></p>
+  <i class="ld-bar"><i id="ld-fill"></i></i>
+</div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top">HOSH</a>
+  <nav class="nav-links" aria-label="Разделы"><a href="#how">Как это работает</a><a href="#shop">Собрать подписку</a><a href="#scents">Ароматы</a><a href="#faq">Вопросы</a></nav>
+  <button class="cart-btn" id="cart-open" type="button" aria-label="Открыть корзину">Корзина <b id="cart-count">0</b></button>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <span class="vert" aria-hidden="true">аромат · атмосфера · впечатление</span>
+    <h1 class="poster"><span>Подписка</span><span>на <i>аромат</i></span></h1>
+    <div class="card-wrap">
+    <div class="hero-card scallop">
+      <svg class="dev-art" viewBox="0 0 330 320" role="img" aria-label="Диффузор Nova">
+        <defs>
+          <linearGradient id="hf" x1="0" x2="1"><stop offset="0" stop-color="#4A504F"/><stop offset="1" stop-color="#2B2F2E"/></linearGradient>
+          <linearGradient id="ht" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E6462"/><stop offset="1" stop-color="#434847"/></linearGradient>
+        </defs>
+        <ellipse cx="165" cy="298" rx="120" ry="12" fill="rgba(34,48,201,.25)"/>
+        <polygon points="220,80 268,54 268,259 220,285" fill="#1F2322"/>
+        <polygon points="62,80 110,54 268,54 220,80" fill="url(#ht)"/>
+        <rect x="62" y="80" width="158" height="205" rx="5" fill="url(#hf)"/>
+        <ellipse cx="165" cy="67" rx="58" ry="11" fill="#0C0D0E"/>
+        <rect x="156" y="94" width="46" height="178" rx="3" fill="#040506"/>
+        <g id="hero-led" transform="translate(159,104)"></g>
+        <circle cx="179" cy="160" r="5" fill="none" stroke="#E04848" stroke-width="1.6"/><path d="M179 153v6" stroke="#E04848" stroke-width="1.6"/>
+        <rect x="76" y="283" width="22" height="9" rx="3" fill="#121314"/><rect x="186" y="283" width="22" height="9" rx="3" fill="#121314"/>
+      </svg>
+      <div class="hero-copy">
+        <p>Диффузор в аренду, масла каждый месяц, сервис и гарантия — одной подпиской. Выберите аппарат, срок и аромат.</p>
+        <a class="btn btn-red" href="#shop">Собрать подписку</a>
+        <span class="from">от <b>33 333 ₸</b> / мес</span>
+      </div>
+    </div>
+      <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
+        <circle cx="60" cy="60" r="58" fill="var(--red)"/>
+        <text><textPath href="#circ">3 ДНЯ БЕСПЛАТНО · 3 ДНЯ БЕСПЛАТНО ·</textPath></text>
+        <text x="60" y="58" class="st-mid" text-anchor="middle">3</text>
+        <text x="60" y="76" class="st-sub" text-anchor="middle">дня</text>
+      </svg>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="mq" id="mq"></div></div>
+
+  <!-- HOW -->
+  <section class="sec" id="how">
+    <h2 class="h2">Как это <i>работает</i></h2>
+    <ol class="how">
+      <li class="scallop"><b>1</b><h3>Выберите аппарат</h3><p>Nova 300 для помещений до 300 м², Nova 1000 — до 1000 м².</p></li>
+      <li class="scallop"><b>2</b><h3>Выберите срок</h3><p>1, 3 или 6 месяцев. Чем дольше, тем ниже цена в месяц.</p></li>
+      <li class="scallop"><b>3</b><h3>Выберите аромат</h3><p>32 композиции: от свежего цитруса до отельных signature.</p></li>
+      <li class="scallop"><b>4</b><h3>Мы привезём</h3><p>Установим в день обращения. Первые 3 дня — бесплатно.</p></li>
+    </ol>
+  </section>
+
+  <!-- SHOP / BUILDER -->
+  <section class="sec shop" id="shop">
+    <h2 class="h2">Собрать <i>подписку</i></h2>
+    <div class="builder">
+      <div class="steps">
+        <div class="step">
+          <h3><span>01</span>Аппарат</h3>
+          <div class="devs" id="b-dev"></div>
+          <div class="qty"><span>Количество</span><button type="button" id="q-minus" aria-label="Меньше">−</button><output id="q-val">1</output><button type="button" id="q-plus" aria-label="Больше">+</button></div>
+        </div>
+        <div class="step">
+          <h3><span>02</span>Срок</h3>
+          <div class="terms" id="b-term"></div>
+        </div>
+        <div class="step" id="scents">
+          <h3><span>03</span>Аромат</h3>
+          <div class="cats" id="b-cats"></div>
+          <div class="sc-grid" id="b-scents"></div>
+        </div>
+      </div>
+      <aside class="summary scallop" aria-live="polite">
+        <span class="sum-k">Ваша подписка</span>
+        <div class="sum-dev" id="s-dev">Nova 300 × 1</div>
+        <dl class="sum-dl">
+          <div><dt>Срок</dt><dd id="s-term">6 месяцев</dd></div>
+          <div><dt>Аромат</dt><dd id="s-scent">—</dd></div>
+          <div><dt>В месяц</dt><dd id="s-pm">—</dd></div>
+          <div><dt>Экономия</dt><dd id="s-save">—</dd></div>
+        </dl>
+        <div class="sum-total"><span>Итого за период</span><b id="s-total">—</b></div>
+        <button class="btn btn-red wide" id="add" type="button">Добавить в корзину</button>
+        <span class="sum-note">Первые 3 дня — бесплатно. В подписку входят диффузор в аренду, масла, их замена, обслуживание и гарантия.</span>
+      </aside>
+    </div>
+  </section>
+
+  <!-- POSTER STATS -->
+  <section class="sec stats-sec">
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <!-- FOR WHOM -->
+  <section class="sec">
+    <h2 class="h2">Для <i>кого</i></h2>
+    <div class="stickers" id="who"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq">
+    <h2 class="h2">Вопросы</h2>
+    <div class="faq" id="faq-list"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sec contact">
+    <h2 class="poster small"><span>Хочется</span><span><i>пахнуть</i></span><span>приятно?</span></h2>
+    <div class="ct">
+      <a class="btn btn-cream" href="https://wa.me/77079479977" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      <a class="ct-l" href="tel:+77079479977">+7 707 947-99-77</a>
+      <span class="ct-l">Астана, ул. Балкантау, 92, 4 этаж, офис 89</span>
+      <span class="ct-l">Пн–Пт · 09:00 — 19:00</span>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><span>HOSH</span><span>Подписка на аромат · Астана · © 2026</span></footer>
+
+<!-- CART DRAWER -->
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer-bg" data-close></div>
+  <aside class="drawer-in" role="dialog" aria-modal="true" aria-labelledby="dr-title">
+    <div class="dr-head"><h2 id="dr-title">Корзина</h2><button type="button" class="dr-x" data-close aria-label="Закрыть">×</button></div>
+    <div class="dr-items" id="dr-items"></div>
+    <div class="dr-foot">
+      <div class="dr-total"><span>Итого в месяц</span><b id="dr-pm">0 ₸</b></div>
+      <form class="dr-form" id="dr-form" novalidate>
+        <label for="o-name">Имя</label><input id="o-name" autocomplete="name" placeholder="Как к вам обращаться">
+        <label for="o-biz">Компания или адрес объекта</label><input id="o-biz" placeholder="Кофейня на Мангилик Ел">
+      </form>
+      <a class="btn btn-red wide" id="checkout" href="#" target="_blank" rel="noopener">Оформить в WhatsApp</a>
+      <span class="sum-note">Менеджер подтвердит заказ и время установки. Договор с юрлицом или ИП.</span>
+    </div>
+  </aside>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/led.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
