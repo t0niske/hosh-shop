@@ -11,7 +11,7 @@ const blob = cat => `<span class="blob" style="background:radial-gradient(circle
 const months = m => `${m} ${m === 1 ? 'месяц' : m < 5 ? 'месяца' : 'месяцев'}`;
 const pm = d => D.fmt(Math.min(...d.plans.map(D.perMonth)));
 
-const NAV = [['Собрать подписку', 'podpiska/'], ['Nova 300', 'nova-300/'], ['Nova 1000', 'nova-1000/'], ['Ароматы', 'aromaty/'], ['Доставка и оплата', 'dostavka-i-oplata/'], ['Вопросы', 'voprosy/']];
+const NAV = [['Собрать подписку', 'podpiska/'], ['Nova 300', 'nova-300/'], ['Nova 1000', 'nova-1000/'], ['Ароматы', 'aromaty/'], ['Для бизнеса', 'aromat-dlya/'], ['Доставка и оплата', 'dostavka-i-oplata/'], ['Вопросы', 'voprosy/']];
 
 function header(p) {
   return `<a class="skip" href="#top">К содержанию</a>

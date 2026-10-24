@@ -2,6 +2,8 @@
 const D = require('../lib/data');
 const { esc } = require('../lib/engine');
 const UI = require('./ui');
+const NICHES = require('./niches');
+const TX = require('./texts');
 
 const HOME = ['Главная', ''];
 const POWER = {
@@ -22,7 +24,7 @@ function register(site) {
     path: '', priority: '1.0', loader: true, bodyClass: 'home',
     title: 'HOSH — подписка на аромат: диффузор, масла и сервис в Астане',
     description: `Подписка на аромат HOSH: диффузор Nova 300 или Nova 1000 в аренду, 32 аромата, масла каждый месяц, сервис и гарантия. От ${from} в месяц, Астана.`,
-    schema: [site.schema.website(), site.schema.business(D.contacts), site.schema.faq(D.faq)],
+    schema: [site.schema.website(), site.schema.business(D.contacts), site.schema.faq(TX.faq)],
     body: `
 <section class="hero">
   <span class="vert" aria-hidden="true">аромат · атмосфера · впечатление</span>
@@ -53,7 +55,7 @@ function register(site) {
 
 <section class="sec">
   <h2 class="h2">Два <i>аппарата</i></h2>
-  <div class="prods">${D.devices.map(d => `<a class="prod scallop" href="/${d.slug}/">${UI.deviceArt('prod-art')}<span class="prod-t"><b>${d.name}</b><small>до ${d.area} м² · ${d.specs[2][1]}</small><span>${d.lead}</span><em>от ${UI.pm(d)} / мес →</em></span></a>`).join('')}</div>
+  <div class="prods">${D.devices.map(d => `<a class="prod scallop" href="/${d.slug}/">${UI.deviceArt('prod-art')}<span class="prod-t"><b>${d.name}</b><small>до ${d.area} м² · ${d.specs[2][1]}</small><span>${TX.lead[d.id]}</span><em>от ${UI.pm(d)} / мес →</em></span></a>`).join('')}</div>
 </section>
 
 <section class="sec">
@@ -66,8 +68,8 @@ function register(site) {
   <div class="stats"><div><b>32</b><span>аромата на выбор в каждой подписке</span></div><div><b>1</b><span>день от заявки до запуска диффузора</span></div><div><b>0 ₸</b><span>за оборудование: диффузор в аренду</span></div></div>
 </section>
 
-<section class="sec"><h2 class="h2">Для <i>кого</i></h2><div class="stickers">${WHO.map(w => `<span class="stk">${w}</span>`).join('')}</div></section>
-${UI.faq(D.faq)}`
+<section class="sec"><h2 class="h2">Для <i>кого</i></h2><div class="stickers">${NICHES.map(n => `<a class="stk" href="/aromat-dlya/${n.slug}/">${n.name}</a>`).join('')}${WHO.filter(w => !/Кофейни|Бутики|Салоны|Отели|Фитнес|Клиники|Офисы|Рестораны|Барбершопы|Квартиры/.test(w)).map(w => `<span class="stk">${w}</span>`).join('')}</div></section>
+${UI.faq(TX.faq)}`
   });
 
   /* ── Конструктор ── */
@@ -111,8 +113,8 @@ ${UI.faq(D.faq)}`
     const p = `${d.slug}/`;
     const other = D.devices[1 - di];
     const dfaq = [
-      [`На какую площадь рассчитан ${d.name}?`, `До ${d.area} м² открытого помещения с обычными потолками. Для высоких потолков или нескольких комнат нужно больше аппаратов.`],
-      ['Что входит в подписку?', D.included.join(', ') + '.'],
+      [`Какую площадь закроет ${d.name}?`, `До ${d.area} м² открытого помещения с обычными потолками. Для высоких потолков или нескольких комнат нужно больше аппаратов.`],
+      ['Что входит в подписку?', TX.included.join(', ') + '.'],
       ['Можно ли купить аппарат?', 'HOSH работает только по подписке: аппарат выдаётся в аренду, а масла и сервис входят в цену.'],
       [`Как часто меняют масло?`, `Флакон ${d.volume} мл, расход около ${String(d.flow).replace('.', ',')} мл в час работы. Масло меняем по графику, который зависит от расписания.`]
     ];
@@ -122,7 +124,7 @@ ${UI.faq(D.faq)}`
       description: `${d.name}: металлический диффузор для помещений до ${d.area} м². Подписка от ${UI.pm(d)} в месяц: аппарат, 32 аромата, масла, сервис и гарантия. HOSH, Астана.`,
       h1: d.name,
       breadcrumbs: [HOME, [d.name, p]],
-      schema: [site.schema.product({ name: `${d.name} — подписка на аромат`, description: d.lead, low: d.plans[0].total, high: d.plans[2].total, count: 3 }, p), site.schema.faq(dfaq)],
+      schema: [site.schema.product({ name: `${d.name} — подписка на аромат`, description: TX.lead[d.id], low: d.plans[0].total, high: d.plans[2].total, count: 3 }, p), site.schema.faq(dfaq)],
       get body() {
         return `<section class="phead">${site.crumbs(this.breadcrumbs)}</section>
 <section class="pp">
@@ -131,7 +133,7 @@ ${UI.faq(D.faq)}`
     <div class="pp-copy">
       <span class="sum-k">до ${d.area} м²</span>
       <h1 class="pp-h">${d.name}</h1>
-      <p>${d.lead}</p>
+      <p>${TX.lead[d.id]}</p>
       <div class="terms terms-static">${d.plans.map((pl, i) => `<a class="tm" href="/podpiska/?dev=${d.id}&amp;term=${i}">${i === 2 ? '<span class="tag">Выгоднее</span>' : ''}<b>${UI.months(pl.months)}</b><span>${D.fmt(D.perMonth(pl))} / мес</span><small>${D.fmt(pl.total)} за период</small></a>`).join('')}</div>
       <a class="btn btn-red" href="/podpiska/?dev=${d.id}">Собрать подписку на ${d.name}</a>
     </div>
@@ -141,11 +143,55 @@ ${UI.faq(D.faq)}`
   <h2 class="h2">Характе<i>ристики</i></h2>
   <div class="spec-grid">
     <dl class="specs2 scallop">${d.specs.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
-    <div class="fits scallop"><span class="sum-k">Где ставят</span><ul>${d.fits.map(f => `<li>${f[0].toUpperCase() + f.slice(1)}</li>`).join('')}</ul><span class="sum-k">В подписке</span><ul>${D.included.map(t => `<li>${t}</li>`).join('')}</ul></div>
+    <div class="fits scallop"><span class="sum-k">Где ставят</span><ul>${d.fits.map(f => `<li>${f[0].toUpperCase() + f.slice(1)}</li>`).join('')}</ul><span class="sum-k">В подписке</span><ul>${TX.included.map(t => `<li>${t}</li>`).join('')}</ul></div>
   </div>
 </section>
 <section class="sec"><div class="prose scallop"><h2>Нужна другая площадь?</h2><p>${other.name} рассчитан на помещение до ${other.area} м², подписка от ${UI.pm(other)} в месяц. <a href="/${other.slug}/">Смотреть ${other.name}</a>.</p></div></section>
-${UI.faq(dfaq, `Вопросы о ${d.name}`)}`;
+${UI.faq(dfaq, `${d.name}: <i>вопросы</i>`)}`;
+      }
+    });
+  });
+
+  /* ── Аромат для бизнеса: ниши ── */
+  add({
+    path: 'aromat-dlya/', section: 'aromat-dlya/',
+    title: 'Аромат для бизнеса: ресторан, офис, магазин, салон, отель | HOSH',
+    description: 'Какой аромат выбрать для ресторана, кофейни, офиса, магазина, салона красоты, барбершопа, клиники, фитнеса, отеля или квартиры. Подборки и подписка HOSH.',
+    h1: 'Аромат для бизнеса',
+    breadcrumbs: [HOME, ['Аромат для бизнеса', 'aromat-dlya/']],
+    schema: [site.schema.itemList(NICHES.map(n => [`Аромат для ${n.gen}`, `aromat-dlya/${n.slug}/`]))],
+    get body() {
+      return UI.phead(this, { title: '<span>Аромат</span><span>для <i>бизнеса</i></span>', lead: 'Десять готовых подборок: для каждого места — пять ароматов, нужный аппарат и советы, куда его поставить. Выберите своё и сразу соберите подписку.' }) + `
+<section class="sec sec-t"><div class="fams">${NICHES.map(n => `<a class="fam scallop" href="/aromat-dlya/${n.slug}/">${UI.blob(D.byN(n.scents[0]).cat)}<b>${n.name}</b><span>${n.scents.slice(0, 3).map(x => D.byN(x).name).join(' · ')}</span><small>Подборка →</small></a>`).join('')}</div></section>
+<section class="sec"><div class="prose scallop"><h2>Как мы собирали подборки</h2><p>Для каждого типа помещения мы смотрели, сколько времени там проводят люди, рядом ли еда и какое настроение нужно: бодрость в офисе и спортзале, спокойствие в клинике, уют в кофейне, статус в лобби отеля. Первый аромат в подборке — самый частый выбор, остальные — альтернативы с другим характером.</p><p>Не нашли своё помещение? Откройте <a href="/aromaty/">весь каталог</a> из 32 ароматов или напишите нам — подскажем.</p></div></section>`;
+    }
+  });
+
+  NICHES.forEach(n => {
+    const p = `aromat-dlya/${n.slug}/`;
+    const d = D.devices.find(x => x.id === n.dev);
+    const hit = D.byN(n.scents[0]);
+    add({
+      path: p, section: 'aromat-dlya/', title: n.title, description: n.description, h1: `Аромат для ${n.gen}`,
+      breadcrumbs: [HOME, ['Аромат для бизнеса', 'aromat-dlya/'], [n.name, p]],
+      schema: [site.schema.itemList(n.scents.map(x => [D.byN(x).name, `aromaty/${D.byN(x).slug}/`])), site.schema.faq(n.faq)],
+      get body() {
+        return UI.phead(this, { title: `<span>Аромат</span><span>для <i>${n.gen}</i></span>`, lead: n.lead }) + `
+<section class="sec sec-t"><div class="prose scallop">${n.text.map(t => `<p>${t}</p>`).join('')}</div></section>
+<section class="sec">
+  <h2 class="h2">Пять <i>ароматов</i></h2>
+  <div class="ars">${n.scents.map(x => UI.aromaCard(D.byN(x))).join('')}</div>
+</section>
+<section class="sec">
+  <h2 class="h2">Какой <i>аппарат</i></h2>
+  <div class="prods"><a class="prod scallop" href="/podpiska/?dev=${d.id}&amp;scent=${hit.n}">${UI.deviceArt('prod-art')}<span class="prod-t"><b>${d.name}</b><small>+ аромат ${esc(hit.name)} · до ${d.area} м²</small><span>Готовый набор для ${n.gen}: аппарат и самый частый аромат. Срок и количество выберете в конструкторе.</span><em>от ${UI.pm(d)} / мес →</em></span></a></div>
+</section>
+<section class="sec">
+  <h2 class="h2">Три <i>совета</i></h2>
+  <ol class="how how-3">${n.tips.map((t, i) => `<li class="scallop"><b>${i + 1}</b><p>${t}</p></li>`).join('')}</ol>
+</section>
+${UI.faq(n.faq, 'Частые <i>вопросы</i>')}
+<section class="sec"><h2 class="h2">Другие <i>подборки</i></h2><div class="stickers">${NICHES.filter(x => x !== n).map(x => `<a class="stk" href="/aromat-dlya/${x.slug}/">${x.name}</a>`).join('')}</div></section>`;
       }
     });
   });
@@ -229,7 +275,7 @@ ${UI.faq(dFaq)}`;
   });
 
   /* ── Вопросы ── */
-  const allFaq = [...D.faq, ...dFaq.slice(0, 2), ['Можно ли сменить аромат?', 'Да, при следующей замене масла. Все 32 аромата входят в подписку без доплаты.'], ['Подходит ли для квартиры?', 'Да. Nova 300 работает тише 35 дБ и рассчитан на площадь до 300 м².']];
+  const allFaq = [...TX.faq, dFaq[0], ['Подходит ли для квартиры?', 'Да. Nova 300 работает тише 35 дБ и рассчитан на площадь до 300 м².']];
   add({
     path: 'voprosy/', section: 'voprosy/',
     title: 'Вопросы о подписке на аромат HOSH — ответы',

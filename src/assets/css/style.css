@@ -350,3 +350,11 @@ body.menu-open .burger i:last-child{transform:translateY(-4.2px) rotate(-45deg)}
 .ph-t{font-size:14px;font-weight:600}
 .nf{min-height:60vh}
 .nf .btn{margin-top:26px}
+
+/* подборки «Аромат для …» */
+a.stk{text-decoration:none}
+a.stk:hover{transform:rotate(0) scale(1.04)}
+.how-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.how-3 li{min-height:0}
+.how-3 p{font-size:17px;font-weight:600;color:var(--ink)}
+@media (max-width:980px){.how-3{grid-template-columns:1fr}}
