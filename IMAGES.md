@@ -3,9 +3,9 @@
 Сгенерируйте в ChatGPT, сохраните в `src/assets/img/` под указанным именем (png, jpg или webp) и пересоберите: `node build.js`.
 Пока файла нет, на сайте стоит подписанная заглушка того же размера.
 
-Готово: 0 из 8.
+Готово: 8 из 8.
 
-## ⬜ `device` — Диффузор Nova на кобальтовом фоне
+## ✅ `device` — Диффузор Nova на кобальтовом фоне
 
 - Формат: 1:1
 - Где на сайте: главная, страницы Nova 300 и Nova 1000
@@ -18,7 +18,7 @@ Subject: a compact rectangular aroma diffuser about 20 cm tall made of matte gra
 Приложите фото аппарата из PDF-прайса как референс.
 ```
 
-## ⬜ `fam-svezhie-citrusovye` — Свежие и цитрусовые
+## ✅ `fam-svezhie-citrusovye` — Свежие и цитрусовые
 
 - Формат: 1:1
 - Где на сайте: страницы свежих ароматов
@@ -29,7 +29,7 @@ Bold playful pop-art product photography, flat saturated cobalt-blue background 
 Subject: halved lemons and limes, a bergamot, basil leaves and ice cubes, arranged as a fun flat-lay seen from above, centred, with air around it. Aspect ratio 1:1.
 ```
 
-## ⬜ `fam-cvetochnye` — Цветочные
+## ✅ `fam-cvetochnye` — Цветочные
 
 - Формат: 1:1
 - Где на сайте: страницы цветочных ароматов
@@ -40,7 +40,7 @@ Bold playful pop-art product photography, flat saturated cobalt-blue background 
 Subject: pink roses, white jasmine and freesia flowers, scattered petals, arranged as a fun flat-lay seen from above, centred, with air around it. Aspect ratio 1:1.
 ```
 
-## ⬜ `fam-gurmanskie` — Гурманские
+## ✅ `fam-gurmanskie` — Гурманские
 
 - Формат: 1:1
 - Где на сайте: страницы гурманских ароматов
@@ -51,7 +51,7 @@ Bold playful pop-art product photography, flat saturated cobalt-blue background 
 Subject: coffee beans, a small espresso cup, vanilla pods and caramel candies, arranged as a fun flat-lay seen from above, centred, with air around it. Aspect ratio 1:1.
 ```
 
-## ⬜ `fam-otelnye` — Отельные
+## ✅ `fam-otelnye` — Отельные
 
 - Формат: 1:1
 - Где на сайте: страницы отельных ароматов
@@ -62,7 +62,7 @@ Bold playful pop-art product photography, flat saturated cobalt-blue background 
 Subject: a folded white hotel towel, a halved fig, a cup of white tea and a hotel key card without text, arranged as a fun flat-lay seen from above, centred, with air around it. Aspect ratio 1:1.
 ```
 
-## ⬜ `fam-spa-relax` — SPA и релакс
+## ✅ `fam-spa-relax` — SPA и релакс
 
 - Формат: 1:1
 - Где на сайте: страницы SPA-ароматов
@@ -73,7 +73,7 @@ Bold playful pop-art product photography, flat saturated cobalt-blue background 
 Subject: lavender bundles, eucalyptus branches, green tea leaves and smooth stones, arranged as a fun flat-lay seen from above, centred, with air around it. Aspect ratio 1:1.
 ```
 
-## ⬜ `fam-parfyumernye` — Парфюмерные
+## ✅ `fam-parfyumernye` — Парфюмерные
 
 - Формат: 1:1
 - Где на сайте: страницы парфюмерных ароматов
@@ -84,7 +84,7 @@ Bold playful pop-art product photography, flat saturated cobalt-blue background 
 Subject: a cedar wood block, a leather glove, dried tobacco leaves and pink peppercorns, arranged as a fun flat-lay seen from above, centred, with air around it. Aspect ratio 1:1.
 ```
 
-## ⬜ `og` — Обложка для соцсетей
+## ✅ `og` — Обложка для соцсетей
 
 - Формат: 16:9
 - Где на сайте: превью ссылок
